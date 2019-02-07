@@ -17,9 +17,9 @@ beego 有内建的 XSRF 的防范机制，要使用此机制，你需要在应�
 
 或者直接在 main 入口处这样设置：
 
-    beego.EnableXSRF = true
-    beego.XSRFKEY = "61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o"
-    beego.XSRFExpire = 3600  //过期时间，默认1小时
+    beego.BConfig.WebConfig.EnableXSRF = true
+    beego.BConfig.WebConfig.XSRFKEY = "61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o"
+    beego.BConfig.WebConfig.XSRFExpire = 3600  //过期时间，默认1小时
 
 
 如果开启了 XSRF，那么 beego 的 Web 应用将对所有用户设置一个 `_xsrf` 的 cookie 值（默认过期 1 小时），如果 `POST PUT DELET` 请求中没有这个 cookie 值，那么这个请求会被直接拒绝。如果你开启了这个机制，那么在所有被提交的表单中，你都需要加上一个域来提供这个值。你可以通过在模板中使用 专门的函数 `XSRFFormHTML()` 来做到这一点：
